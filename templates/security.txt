@@ -1,0 +1,4 @@
+Contact: mailto:[SECURITY EMAIL]
+Expires: [DATE ONE YEAR FROM NOW]
+Preferred-Languages: en
+Canonical: https://[YOUR-DOMAIN]/.well-known/security.txt
