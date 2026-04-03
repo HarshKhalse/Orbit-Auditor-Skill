@@ -9,18 +9,18 @@ L7,App Store,APP,Privacy policy URL,manual,Critical
 L8,App Store,APP,Support URL,manual,High
 L9,App Store,APP,App category selected,manual,Medium
 L10,App Store,APP,Age rating completed,manual,Critical
-L11,Website,BOTH,Landing page live,index.html|page.tsx|page.js,Critical
-L12,Website,BOTH,Open Graph tags,og:title|og:description|og:image,High
-L13,Website,BOTH,Favicon,favicon,Medium
-L14,Website,BOTH,Mobile responsive,viewport|@media,High
+L11,Website,BOTH,Landing page live,index.html|page.tsx|page.js|page.jsx,Critical
+L12,Website,BOTH,Open Graph tags,og:title|og:description|og:image|metadata\s*=\s*\{,High
+L13,Website,BOTH,Favicon,favicon|icon.ico|icon.png|apple-icon,Medium
+L14,Website,BOTH,Mobile responsive,viewport|@media|tailwind|sm:|md:|lg:,High
 L15,Website,BOTH,SSL (HTTPS),manual,Critical
 L16,Website,BOTH,CTA button working,manual,Critical
 L17,SEO,BOTH,Google Search Console,manual,Medium
 L18,SEO,BOTH,Bing Webmaster Tools,manual,Low
-L19,SEO,BOTH,Sitemap.xml,sitemap.xml,High
+L19,SEO,BOTH,Sitemap.xml,sitemap.xml|sitemap.ts,High
 L20,SEO,BOTH,IndexNow,IndexNow,Medium
-L21,SEO,BOTH,Meta title + description,<title|meta name="description",High
-L22,SEO,BOTH,Robots.txt,robots.txt,High
+L21,SEO,BOTH,Meta title + description,<title|meta name="description"|metadata\s*=\s*\{,High
+L22,SEO,BOTH,Robots.txt,robots.txt|robots.ts,High
 L23,Marketing,BOTH,Launch post drafted,manual,Medium
 L24,Marketing,BOTH,Social media assets,manual,Medium
 L25,Marketing,BOTH,Email list notified,manual,Low

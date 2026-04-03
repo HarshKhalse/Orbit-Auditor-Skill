@@ -13,6 +13,7 @@ If you are a Developer, you can also just run it yourself!
 * **Dual Reporting**: Exports a beautiful `audit_report.html` file covering:
   - 1. Launch Readiness (SEO, Privacy, ToS, App Store limits)
   - 2. Security Hardening (Authentication, IDOR, Rate Limiting, Secrets)
+* **Modern Stack Optimized**: Includes specific regex rules for **Supabase**, **Vercel**, **Next.js**, **Upstash**, and other serverless/free-to-use platforms.
 * **Agent Auto-Fixes**: The toolkit includes raw markdown templates for legal compliance. When the AI detects you missing a `security.txt` or a `privacy_policy.md`, it injects these right into your repository for you.
 * **Multi-Agent Compatibility**: Drop-in ready for `.cursorrules`, `CLAUDE.md`, and AntiGravity `SKILL.md`.
 

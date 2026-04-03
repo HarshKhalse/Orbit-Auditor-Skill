@@ -12,6 +12,7 @@ description: >
 
 A fully automated, two-phase pre-launch system powered by a custom Python scanning toolkit.
 Instead of manually guessing patterns, this skill uses its native `audit.py` engine to scan for launch readiness and security misconfigurations.
+The rules engine is optimized for modern stacks including **Supabase**, **Vercel**, **Next.js**, and classic Node/Python backends.
 
 ## Using the Toolkit
 

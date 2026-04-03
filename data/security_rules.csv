@@ -1,35 +1,35 @@
 id,domain,check,severity,scan_pattern
-S1,Authentication,Passwords hashed with bcrypt/argon2/scrypt,Critical,.password.|hash
-S2,Authentication,No MD5/SHA1 for passwords,Critical,md5|sha1|sha256.*password
-S3,Authentication,Session tokens expire,High,expiresIn|maxAge
-S4,Authentication,Email verification before account access,Medium,email.*verif|emailConfirmed
-S5,Authentication,Password reset tokens have TTL,High,reset.*token|expires
-S6,Authentication,Login rate limited,Critical,rateLimit|rate_limit|limiter
-S7,Authentication,Logout invalidates session server-side,High,logout|signOut|session.*destroy
-S8,Authentication,CSRF protection on state-changing endpoints,High,csrf|csurf|X-CSRF
-S9,Authorization,All resource routes verify ownership,Critical,userId|ownerId
-S10,Authorization,No raw IDs exposed without auth check,Critical,req.params.id
-S11,Authorization,Row-level security (RLS) enabled,High,RLS|CREATE POLICY
-S12,Authorization,Admin-only routes gated by role check,Critical,admin|isAdmin|role.*admin
-S13,Authorization,Indirect object refs use opaque IDs,Medium,id UUID
-S14,Deployment,HTTPS enforced,High,https|Strict-Transport-Security
+S1,Authentication,Passwords hashed with bcrypt/argon2/scrypt,Critical,.password.|hash|supabase\.auth
+S2,Authentication,No MD5/SHA1 for passwords,Critical,md5|sha1|sha256.*password|supabase\.auth
+S3,Authentication,Session tokens expire,High,expiresIn|maxAge|supabase\.auth|SupabaseClient
+S4,Authentication,Email verification before account access,Medium,email.*verif|emailConfirmed|supabase\.auth\.signUp
+S5,Authentication,Password reset tokens have TTL,High,reset.*token|expires|supabase\.auth\.resetPassword
+S6,Authentication,Login rate limited,Critical,rateLimit|rate_limit|limiter|upstash/ratelimit|supabase
+S7,Authentication,Logout invalidates session server-side,High,logout|signOut|session.*destroy|supabase\.auth\.signOut
+S8,Authentication,CSRF protection on state-changing endpoints,High,csrf|csurf|X-CSRF|next-auth|supabase
+S9,Authorization,All resource routes verify ownership,Critical,userId|ownerId|auth\.uid\(\)|supabase
+S10,Authorization,No raw IDs exposed without auth check,Critical,req\.params\.id|params:\s*\{\s*id\s*\}|auth\.uid\(\)
+S11,Authorization,Row-level security (RLS) enabled,High,RLS|CREATE POLICY|supabase/migrations
+S12,Authorization,Admin-only routes gated by role check,Critical,admin|isAdmin|role.*admin|supabase\.auth\.admin
+S13,Authorization,Indirect object refs use opaque IDs,Medium,id UUID|gen_random_uuid\(\)|uuid
+S14,Deployment,HTTPS enforced,High,https|Strict-Transport-Security|vercel|supabase
 S15,Deployment,Database not publicly accessible,Critical,manual
-S16,Deployment,Structured logging: auth events,High,logger|pino|winston
-S17,Deployment,Structured logging: API errors,Medium,logger.error
-S18,Deployment,Security headers set,High,helmet|Content-Security-Policy
-S19,Abuse Protection,Signup rate limited,High,rateLimit
-S20,Abuse Protection,All API endpoints rate limited,High,rateLimit
-S21,Abuse Protection,AI generation endpoints rate limited,High,rateLimit
-S22,Abuse Protection,Bot/script protection,Medium,captcha|turnstile
+S16,Deployment,Structured logging: auth events,High,logger|pino|winston|console\.log|console\.error|sentry
+S17,Deployment,Structured logging: API errors,Medium,logger\.error|console\.error|sentry
+S18,Deployment,Security headers set,High,helmet|Content-Security-Policy|next\.config\.(js|mjs|ts)
+S19,Abuse Protection,Signup rate limited,High,rateLimit|upstash/ratelimit|supabase
+S20,Abuse Protection,All API endpoints rate limited,High,rateLimit|upstash/ratelimit
+S21,Abuse Protection,AI generation endpoints rate limited,High,rateLimit|upstash/ratelimit
+S22,Abuse Protection,Bot/script protection,Medium,captcha|turnstile|recaptcha|hcaptcha
 S23,Secrets,No API keys in frontend JS bundle,Critical,VITE_.*KEY|NEXT_PUBLIC_.*KEY|sk-|AIza
 S24,Secrets,.env in .gitignore,Critical,\.env
 S25,Secrets,No secrets in package.json,Critical,password|secret|api_key
 S26,Secrets,Supabase service role key only on server,Critical,service_role
-S27,Secrets,JWT / auth secrets not hardcoded,Critical,JWT_SECRET
-S28,Validation,All API body inputs validated,Critical,zod|joi|yup|express-validator
-S29,Validation,SQL queries use parameterized statements,Critical,query.*\$\{
-S30,Validation,File uploads validated,Critical,multer|upload
-S31,Validation,Query params sanitized,High,req.query\.
-S32,Validation,HTML output sanitized,High,innerHTML|dangerouslySetInnerHTML
+S27,Secrets,JWT / auth secrets not hardcoded,Critical,JWT_SECRET|SUPABASE_JWT
+S28,Validation,All API body inputs validated,Critical,zod|joi|yup|express-validator|class-validator
+S29,Validation,SQL queries use parameterized statements,Critical,query.*\$\{|prisma|supabase\.from|drizzle
+S30,Validation,File uploads validated,Critical,multer|upload|supabase\.storage
+S31,Validation,Query params sanitized,High,req\.query\.|searchParams
+S32,Validation,HTML output sanitized,High,innerHTML|dangerouslySetInnerHTML|dompurify
 S33,Validation,No eval() or Function(),Critical,eval\(|new Function\(
-S34,Validation,Path traversal prevented,High,readFile|writeFile|path.join
+S34,Validation,Path traversal prevented,High,readFile|writeFile|path\.join
